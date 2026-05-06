@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Neon Strike</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Inter',sans-serif;}
+
+body{
+    background:#020617;
+    color:white;
+}
+
+/* BACKGROUND */
+.background{
+    position:fixed;
+    width:100%;
+    height:100%;
+    top:0;
+    left:0;
+    z-index:-1;
+    overflow:hidden;
+}
+
+.glow{
+    position:absolute;
+    width:600px;
+    height:600px;
+    background:radial-gradient(circle, rgba(99,102,241,0.3), transparent 70%);
+    top:-100px;
+    left:-100px;
+    animation:moveGlow 10s infinite alternate ease-in-out;
+}
+
+@keyframes moveGlow{
+    0%{transform:translate(0,0);}
+    100%{transform:translate(200px,200px);}
+}
+
+.particles::before,
+.particles::after{
+    content:'';
+    position:absolute;
+    width:100%;
+    height:100%;
+    background-image:
+        radial-gradient(#6366f1 1px, transparent 1px),
+        radial-gradient(#8b5cf6 1px, transparent 1px);
+    background-size:50px 50px;
+    opacity:0.15;
+    animation:moveParticles 20s linear infinite;
+}
+
+@keyframes moveParticles{
+    0%{transform:translateY(0);}
+    100%{transform:translateY(-200px);}
+}
+
+/* NAV */
+nav{
+    display:flex;
+    justify-content:space-between;
+    padding:20px 8%;
+    position:fixed;
+    width:100%;
+    background:rgba(10,10,20,0.7);
+    backdrop-filter:blur(10px);
+    z-index:1000;
+}
+nav ul{display:flex;gap:30px;}
+nav a{color:#aaa;text-decoration:none;}
+nav a:hover{color:white;}
+
+/* HERO */
+.hero{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:140px 8% 120px;
+}
+.hero h1{
+    font-size:52px;
+    background:linear-gradient(90deg,#fff,#9ca3af);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+}
+.hero p{margin:20px 0;color:#9ca3af;}
+
+.btn{
+    padding:12px 28px;
+    border:none;
+    border-radius:8px;
+    cursor:pointer;
+}
+.primary{background:linear-gradient(135deg,#6366f1,#8b5cf6);}
+.secondary{background:#1f2937;color:white;}
+
+.hero img{
+    width:45%;
+    border-radius:12px;
+    box-shadow:0 0 30px rgba(99,102,241,0.3);
+}
+
+/* SECTION */
+.section{
+    padding:120px 8%;
+    text-align:center;
+    border-top:1px solid #1f2937;
+}
+
+/* ABOUT */
+.about-container{
+    display:flex;
+    gap:50px;
+    margin-top:40px;
+    flex-wrap:wrap;
+    justify-content:center;
+}
+.about-text{text-align:left;color:#9ca3af;}
+.about-text li{margin-bottom:10px;}
+.about-image img{
+    width:300px;
+    border-radius:12px;
+}
+
+/* FEATURES */
+.features{
+    display:flex;
+    gap:30px;
+    margin-top:40px;
+    flex-wrap:wrap;
+}
+.feature{
+    background:#111827;
+    padding:25px;
+    border-radius:12px;
+    flex:1;
+    min-width:250px;
+    transition:0.3s;
+    border:1px solid #1f2937;
+}
+.feature:hover{
+    transform:translateY(-8px);
+    border-color:#6366f1;
+    box-shadow:0 10px 25px rgba(99,102,241,0.2);
+}
+.feature i{
+    color:#6366f1;
+    margin-bottom:10px;
+}
+
+/* CONTACT */
+.contact-container{
+    display:flex;
+    gap:40px;
+    margin-top:40px;
+    flex-wrap:wrap;
+    justify-content:center;
+}
+
+.contact-info{
+    flex:1;
+    min-width:250px;
+    text-align:left;
+}
+
+.contact-info p{
+    color:#9ca3af;
+    margin-bottom:20px;
+}
+
+.info-item{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    margin-bottom:15px;
+    color:#9ca3af;
+}
+
+.info-item i{
+    color:#6366f1;
+}
+
+.contact-form{
+    flex:1;
+    min-width:300px;
+    background:rgba(17,24,39,0.6);
+    padding:30px;
+    border-radius:12px;
+    backdrop-filter:blur(10px);
+    border:1px solid #1f2937;
+}
+
+.contact-form input,
+.contact-form textarea{
+    width:100%;
+    margin-bottom:15px;
+    padding:12px;
+    border-radius:6px;
+    border:1px solid #1f2937;
+    background:#020617;
+    color:white;
+    outline:none;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus{
+    border-color:#6366f1;
+}
+
+.contact-form button{
+    width:100%;
+    padding:12px;
+    background:linear-gradient(135deg,#6366f1,#8b5cf6);
+    border:none;
+    border-radius:6px;
+    color:white;
+    cursor:pointer;
+}
+
+/* FOOTER */
+footer{text-align:center;padding:40px;}
+.socials a{
+    margin:10px;
+    font-size:20px;
+    color:#aaa;
+    transition:0.3s;
+}
+.socials a:hover{
+    color:#6366f1;
+    transform:translateY(-3px) scale(1.2);
+}
+
+/* MODAL */
+.modal{
+    display:none;
+    position:fixed;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,0.8);
+    justify-content:center;
+    align-items:center;
+}
+.modal-content{
+    background:#111827;
+    padding:30px;
+    border-radius:10px;
+}
+</style>
+</head>
+
+<body>
+
+<!-- BACKGROUND -->
+<div class="background">
+    <div class="glow"></div>
+    <div class="particles"></div>
+</div>
+
+<!-- NAV -->
+<nav>
+    <h2>NEON STRIKE</h2>
+    <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#features">Features</a></li>
+        <li><a href="#contact">Contact</a></li>
+    </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+    <div>
+        <h1>Enter the Future of Cyber Warfare</h1>
+        <p>A fast-paced cyberpunk FPS where strategy meets action.</p>
+
+        <button class="btn primary" onclick="openModal()">Play Now</button>
+        <button class="btn secondary" onclick="showDemo()">Live Demo</button>
+    </div>
+
+    <img src="https://images.unsplash.com/photo-1542751371-adc38448a05e">
+</section>
+
+<!-- ABOUT -->
+<section class="section" id="about">
+    <h2>About The Game</h2>
+    <p style="max-width:700px;margin:20px auto;color:#9ca3af;">
+        Neon Strike is a next-generation cyberpunk FPS set in a futuristic
+        neon-lit city where chaos and technology collide.
+    </p>
+
+    <div class="about-container">
+        <div class="about-image">
+            <img src="https://images.unsplash.com/photo-1511512578047-dfb367046420">
+        </div>
+
+        <div class="about-text">
+            <ul>
+                <li>⚡ Dynamic open-world environment</li>
+                <li>🎯 Skill-based combat system</li>
+                <li>🌐 Real-time multiplayer battles</li>
+                <li>🤖 AI-driven enemies and missions</li>
+                <li>🚀 Regular updates and new content</li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<!-- FEATURES -->
+<section class="section" id="features">
+    <h2>Game Features</h2>
+
+    <div class="features">
+        <div class="feature"><i class="fas fa-bolt"></i><h3>Fast Gameplay</h3></div>
+        <div class="feature"><i class="fas fa-crosshairs"></i><h3>Precision Weapons</h3></div>
+        <div class="feature"><i class="fas fa-users"></i><h3>Multiplayer</h3></div>
+    </div>
+
+    <div class="features">
+        <div class="feature"><i class="fas fa-map"></i><h3>Open World</h3></div>
+        <div class="feature"><i class="fas fa-robot"></i><h3>AI Enemies</h3></div>
+        <div class="feature"><i class="fas fa-trophy"></i><h3>Rank System</h3></div>
+    </div>
+</section>
+
+<!-- CONTACT -->
+<section class="section contact" id="contact">
+    <h2>Contact Us</h2>
+
+    <div class="contact-container">
+        <div class="contact-info">
+            <p>Have questions? Reach out anytime.</p>
+            <div class="info-item"><i class="fas fa-envelope"></i><span>support@neonstrike.com</span></div>
+            <div class="info-item"><i class="fas fa-map-marker-alt"></i><span>Cyber City</span></div>
+        </div>
+
+        <div class="contact-form">
+            <input type="text" id="name" placeholder="Your Name">
+            <input type="email" id="email" placeholder="Your Email">
+            <textarea id="msg" placeholder="Your Message"></textarea>
+            <button onclick="sendMessage()">Send Message</button>
+        </div>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+    <div class="socials">
+        <a href="https://github.com/parnikapatole" target="_blank"><i class="fab fa-github"></i></a>
+        <a href="https://www.linkedin.com/in/parnika-patole-299905385" target="_blank"><i class="fab fa-linkedin"></i></a>
+        <a href="https://twitter.com/" target="_blank"><i class="fab fa-twitter"></i></a>
+        <a href="https://www.facebook.com/" target="_blank"><i class="fab fa-facebook"></i></a>
+        <a href="https://www.instagram.com/" target="_blank"><i class="fab fa-instagram"></i></a>
+    </div>
+</footer>
+
+<!-- MODAL -->
+<div class="modal" id="modal">
+    <div class="modal-content">
+        <h3>Join Neon Strike</h3>
+        <p>Coming soon!</p>
+        <button onclick="closeModal()">Close</button>
+    </div>
+</div>
+
+<script>
+function showDemo(){alert("Demo coming soon!");}
+
+function sendMessage(){
+    let name=document.getElementById("name").value;
+    let email=document.getElementById("email").value;
+
+    if(name===""||email===""){
+        alert("Please fill all fields!");
+    } else {
+        alert("Message sent!");
+    }
+}
+
+function openModal(){document.getElementById("modal").style.display="flex";}
+function closeModal(){document.getElementById("modal").style.display="none";}
+</script>
+
+</body>
+</html>
